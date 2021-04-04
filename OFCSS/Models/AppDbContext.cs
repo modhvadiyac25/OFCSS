@@ -21,6 +21,7 @@ namespace OFCSS.Models
         public DbSet<CropSale> cropSales { get; set; }
         public DbSet<MerchantRequirment> merchantRequirments { get; set; }
         public DbSet<OFCSS.ViewModel.RegisterViewModel> RegisterViewModel { get; set; }
+        public DbSet<OFCSS.ViewModel.CreateRoleViewModel> CreateRoleViewModel { get; set; }
        
     }
 }
