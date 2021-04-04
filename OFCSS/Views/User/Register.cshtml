@@ -1,0 +1,83 @@
+﻿@model OFCSS.ViewModel.RegisterViewModel
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<h1>Register</h1>
+
+<h4>RegisterViewModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Register">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="usertype" /> @Html.DisplayNameFor(model => model.usertype)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="fname" class="control-label"></label>
+                <input asp-for="fname" class="form-control" />
+                <span asp-validation-for="fname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="lname" class="control-label"></label>
+                <input asp-for="lname" class="form-control" />
+                <span asp-validation-for="lname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="state" class="control-label"></label>
+                <input asp-for="state" class="form-control" />
+                <span asp-validation-for="state" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="distric" class="control-label"></label>
+                <input asp-for="distric" class="form-control" />
+                <span asp-validation-for="distric" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="taluka" class="control-label"></label>
+                <input asp-for="taluka" class="form-control" />
+                <span asp-validation-for="taluka" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="village" class="control-label"></label>
+                <input asp-for="village" class="form-control" />
+                <span asp-validation-for="village" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="email" class="control-label"></label>
+                <input asp-for="email" class="form-control" />
+                <span asp-validation-for="email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="mno" class="control-label"></label>
+                <input asp-for="mno" class="form-control" />
+                <span asp-validation-for="mno" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="password" class="control-label"></label>
+                <input asp-for="password" class="form-control" />
+                <span asp-validation-for="password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="confirm_password" class="control-label"></label>
+                <input asp-for="confirm_password" class="form-control" />
+                <span asp-validation-for="confirm_password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
