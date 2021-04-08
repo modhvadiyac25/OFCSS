@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using OFCSS.ViewModel;
 using Microsoft.AspNetCore.Identity;
 using OFCSS.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace OFCSS.Controllers
 {
@@ -40,14 +41,16 @@ namespace OFCSS.Controllers
             {
                 var result = await signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
 
+              
+
                 if (result.Succeeded)
-                {
+                { 
                     if (!string.IsNullOrEmpty(returnUrl))
                     {
                         return Redirect(returnUrl);
                     }
                     else
-                    {
+                    { 
                         return RedirectToAction("index", "Home");
                     }
 
@@ -76,6 +79,20 @@ namespace OFCSS.Controllers
             {
                 if (model.usertype)
                 {
+                    //var farmerObj = new Admin
+                    //{
+                    //    fname = model.fname,
+                    //    lname = model.lname,
+                    //    state = model.state,
+                    //    distric = model.distric,
+                    //    taluka = model.taluka,
+                    //    village = model.village,
+                    //    email = model.email,
+                    //    mno = model.mno,
+                    //    password = model.password
+                    //};
+                    //context.admins.Add(farmerObj);
+
                     var farmerObj = new Farmer
                     {
                         fname = model.fname,
@@ -83,13 +100,15 @@ namespace OFCSS.Controllers
                         state = model.state,
                         distric = model.distric,
                         taluka = model.taluka,
-                        village  = model.village,
+                        village = model.village,
                         email = model.email,
                         mno = model.mno,
                         password = model.password
 
                     };
                     context.farmers.Add(farmerObj);
+
+
                 }
                 else {
 
@@ -129,7 +148,7 @@ namespace OFCSS.Controllers
                     }
 
                     await signInManager.SignInAsync(user, isPersistent: false);
-                    return RedirectToAction("index", "Home");
+                    return RedirectToAction("Login", "User");
                 }
 
                 foreach (var error in result.Errors)

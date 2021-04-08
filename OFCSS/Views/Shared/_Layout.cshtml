@@ -19,9 +19,7 @@
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-
-
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse"> 
                     <ul class="navbar-nav flex-grow-1">
                         @if (SignInManager.IsSignedIn(User))
                         {
@@ -46,30 +44,39 @@
                                     Login
                                 </a>
                             </li>
-                        }
-
+                        } 
                     </ul>
 
                     <ul class="navbar-nav flex-grow-1 ml-auto">
-                         
 
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        @*<li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </li>*@
                         @if (SignInManager.IsSignedIn(User) && User.IsInRole("Merchant"))
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="QuizCategory" asp-action="PlayQuiz">Add Merchant Requirnments</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Merchant" asp-action="CreateMerchantRequirment">Add Merchant Requirnments</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="QuizCategory" asp-action="PlayQuiz">Show Crop Sales</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Merchant" asp-action="ShowMerchantRequirment">Show Merchant Requirments</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Farmer" asp-action="ShowCropSale">Show Crop Sales</a>
                             </li>
                         }
-
                         @if (SignInManager.IsSignedIn(User) && User.IsInRole("Farmer"))
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="QuizCategory" asp-action="PlayQuiz">Add Crop Sale</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Farmer" asp-action="CreateCropSale">Add Crop Sale</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="QuizCategory" asp-action="PlayQuiz">Show Merchant Requirnments</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Farmer" asp-action="ShowCropSale">Show Crop Sales</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Merchant" asp-action="ShowMerchantRequirment">Show Merchant Requirnments</a>
                             </li>
                         }
                         @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
@@ -90,25 +97,19 @@
                                 </div>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="QuizCategory" asp-action="CreateCategory"></a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Farmer" asp-action="CreateCropSale">Add Crop Sale</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="QuizQuestion" asp-action="CreateQuestion"> </a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Merchant" asp-action="ShowMerchantRequirment">Show MR</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Merchant" asp-action="CreateMerchantRequirment">Add MR</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Farmer" asp-action="ShowCropSale">Show Crop Sales</a>
                             </li>
                         }
-                    </ul>
-
-
-
-
-
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
                     </ul>
                 </div>
             </div>
@@ -118,7 +119,7 @@
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
-    </div>
+    </div> 
 
     <footer class="border-top footer text-muted">
         <div class="container">

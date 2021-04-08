@@ -1,0 +1,44 @@
+﻿@model OFCSS.ViewModel.CreateCropSaleViewModel
+
+@{
+    ViewData["Title"] = "CreateCropSale";
+}
+
+<h1>CreateCropSale</h1> 
+ 
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreateCropSale">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="cname" class="control-label"></label>
+                <input asp-for="cname" class="form-control" />
+                <span asp-validation-for="cname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="cquantity" class="control-label"></label>
+                <input asp-for="cquantity" class="form-control" />
+                <span asp-validation-for="cquantity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="cprice" class="control-label"></label>
+                <input asp-for="cprice" class="form-control" />
+                <span asp-validation-for="cprice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="cdiscription" class="control-label"></label>
+                <input asp-for="cdiscription" class="form-control" />
+                <span asp-validation-for="cdiscription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    @*<a asp-action="Index">Back to List</a>*@
+</div>
+

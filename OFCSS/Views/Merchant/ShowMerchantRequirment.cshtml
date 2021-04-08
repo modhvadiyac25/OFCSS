@@ -1,0 +1,63 @@
+﻿@model IEnumerable<OFCSS.Models.MerchantRequirment>
+
+@{
+    ViewData["Title"] = "ShowMerchantRequirment";
+}
+
+<h1>Show Merchant Requirments</h1>
+
+<p>
+    <a asp-action="CreateMerchantRequirment">Create Merchant Requirment</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Requirment Name
+                @*Html.DisplayNameFor(model => model.mr_name)*@
+            </th>
+            <th>
+                Quantity
+                @*@Html.DisplayNameFor(model => model.mr_quantity)*@
+            </th>
+            <th>
+                Price
+                @*@Html.DisplayNameFor(model => model.mr_price)*@
+            </th>
+            <th>
+                Discription
+                @*@Html.DisplayNameFor(model => model.mr_discription)*@
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.m_id)
+            </th>*@
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.mr_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.mr_quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.mr_price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.mr_discription)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.m_id)
+            </td>*@
+            @*<td>
+                <a asp-action="Edit" asp-route-id="@item.mr_id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.mr_id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.mr_id">Delete</a>
+            </td>*@
+        </tr>
+}
+    </tbody>
+</table>

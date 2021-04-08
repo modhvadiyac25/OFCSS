@@ -14,6 +14,10 @@ namespace OFCSS.ViewModel
         public string Email { get; set; }
 
         [Required]
+        [Display(Name = "Is Farmer")]
+        public bool usertype { get; set; }
+
+        [Required]
         [DataType(DataType.Password)]
         public string Password { get; set; }
 

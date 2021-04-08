@@ -36,13 +36,10 @@ namespace OFCSS.Models
         [MaxLength(10, ErrorMessage = "Mobile no must be 10 digits !!")]
         public string mno { get; set; }
 
-
         [MinLength(8, ErrorMessage = "Password must be greater then 8 characters !!")]
         [Required, DataType(DataType.Password)]
         public string password { get; set; }
 
-
-        public int mr_id { get; set; }
-        public MerchantRequirment MerchantRequirment { get; set; }
+        public ICollection<MerchantRequirment> MerchantRequirment { get; set; }
     }
 }

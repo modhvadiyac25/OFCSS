@@ -11,14 +11,15 @@ namespace OFCSS.ViewModel
         [Key]
         public int rid { get; set; }
 
-            [Required]
-            public bool usertype { get; set; }
+        [Required]
+        [Display(Name = "Is Farmer")]
+        public bool usertype { get; set; }
 
-            [Required]
-            public string fname { get; set; }
+        [Required]
+        public string fname { get; set; }
 
-            [Required]
-            public string lname { get; set; }
+        [Required]
+        public string lname { get; set; }
 
         [Required]
         public string state { get; set; }
