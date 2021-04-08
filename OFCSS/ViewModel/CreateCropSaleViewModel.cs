@@ -4,11 +4,10 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace OFCSS.Models
+namespace OFCSS.ViewModel
 {
-    public class CropSale
-    { 
-
+    public class CreateCropSaleViewModel
+    {
         [Key]
         public int c_id { get; set; }
 
@@ -23,8 +22,5 @@ namespace OFCSS.Models
 
         [Required]
         public string cdiscription { get; set; }
-
-        public int f_id { get; set; }
-        public Farmer Farmer { get; set; }
     }
 }

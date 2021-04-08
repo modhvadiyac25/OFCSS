@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OFCSS.Models;
 
 namespace OFCSS.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210404121532_modifyFarmerAndCropSale2")]
+    partial class modifyFarmerAndCropSale2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -356,6 +358,9 @@ namespace OFCSS.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int?>("MerchantRequirmentmr_id")
+                        .HasColumnType("int");
+
                     b.Property<string>("distric")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -377,6 +382,9 @@ namespace OFCSS.Migrations
                         .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)");
 
+                    b.Property<int>("mr_id")
+                        .HasColumnType("int");
+
                     b.Property<string>("password")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -395,6 +403,8 @@ namespace OFCSS.Migrations
 
                     b.HasKey("m_id");
 
+                    b.HasIndex("MerchantRequirmentmr_id");
+
                     b.ToTable("merchants");
                 });
 
@@ -404,12 +414,6 @@ namespace OFCSS.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("Merchantm_id")
-                        .HasColumnType("int");
-
-                    b.Property<int>("m_id")
-                        .HasColumnType("int");
 
                     b.Property<string>("mr_discription")
                         .IsRequired()
@@ -428,8 +432,6 @@ namespace OFCSS.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("mr_id");
-
-                    b.HasIndex("Merchantm_id");
 
                     b.ToTable("merchantRequirments");
                 });
@@ -494,13 +496,13 @@ namespace OFCSS.Migrations
                     b.Navigation("Farmer");
                 });
 
-            modelBuilder.Entity("OFCSS.Models.MerchantRequirment", b =>
+            modelBuilder.Entity("OFCSS.Models.Merchant", b =>
                 {
-                    b.HasOne("OFCSS.Models.Merchant", "Merchant")
-                        .WithMany("MerchantRequirment")
-                        .HasForeignKey("Merchantm_id");
+                    b.HasOne("OFCSS.Models.MerchantRequirment", "MerchantRequirment")
+                        .WithMany("Merchant")
+                        .HasForeignKey("MerchantRequirmentmr_id");
 
-                    b.Navigation("Merchant");
+                    b.Navigation("MerchantRequirment");
                 });
 
             modelBuilder.Entity("OFCSS.Models.Farmer", b =>
@@ -508,9 +510,9 @@ namespace OFCSS.Migrations
                     b.Navigation("CropSale");
                 });
 
-            modelBuilder.Entity("OFCSS.Models.Merchant", b =>
+            modelBuilder.Entity("OFCSS.Models.MerchantRequirment", b =>
                 {
-                    b.Navigation("MerchantRequirment");
+                    b.Navigation("Merchant");
                 });
 #pragma warning restore 612, 618
         }

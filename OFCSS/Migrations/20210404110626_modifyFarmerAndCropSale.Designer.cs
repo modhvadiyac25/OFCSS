@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OFCSS.Models;
 
 namespace OFCSS.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210404110626_modifyFarmerAndCropSale")]
+    partial class modifyFarmerAndCropSale
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -356,6 +358,150 @@ namespace OFCSS.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int?>("MerchantRequirmentmr_id")
+                        .HasColumnType("int");
+
+                    b.Property<string>("distric")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("fname")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("lname")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("mno")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<int>("mr_id")
+                        .HasColumnType("int");
+
+                    b.Property<string>("password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("state")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("taluka")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("village")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("m_id");
+
+                    b.HasIndex("MerchantRequirmentmr_id");
+
+                    b.ToTable("merchants");
+                });
+
+            modelBuilder.Entity("OFCSS.Models.MerchantRequirment", b =>
+                {
+                    b.Property<int>("mr_id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("mr_discription")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("mr_name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("mr_price")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("mr_quantity")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("mr_id");
+
+                    b.ToTable("merchantRequirments");
+                });
+
+            modelBuilder.Entity("OFCSS.ViewModel.CreateCropSaleViewModel", b =>
+                {
+                    b.Property<int>("c_id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("cdiscription")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("cname")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("cprice")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("cquantity")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("c_id");
+
+                    b.ToTable("CreateCropSaleViewModel");
+                });
+
+            modelBuilder.Entity("OFCSS.ViewModel.CreateRoleViewModel", b =>
+                {
+                    b.Property<string>("RoleName")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("RoleName");
+
+                    b.ToTable("CreateRoleViewModel");
+                });
+
+            modelBuilder.Entity("OFCSS.ViewModel.LoginViewModel", b =>
+                {
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("RememberMe")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Email");
+
+                    b.ToTable("LoginViewModel");
+                });
+
+            modelBuilder.Entity("OFCSS.ViewModel.RegisterViewModel", b =>
+                {
+                    b.Property<int>("rid")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("confirm_password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("distric")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -389,49 +535,16 @@ namespace OFCSS.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("usertype")
+                        .HasColumnType("bit");
+
                     b.Property<string>("village")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("m_id");
+                    b.HasKey("rid");
 
-                    b.ToTable("merchants");
-                });
-
-            modelBuilder.Entity("OFCSS.Models.MerchantRequirment", b =>
-                {
-                    b.Property<int>("mr_id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("Merchantm_id")
-                        .HasColumnType("int");
-
-                    b.Property<int>("m_id")
-                        .HasColumnType("int");
-
-                    b.Property<string>("mr_discription")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("mr_name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("mr_price")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("mr_quantity")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("mr_id");
-
-                    b.HasIndex("Merchantm_id");
-
-                    b.ToTable("merchantRequirments");
+                    b.ToTable("RegisterViewModel");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -488,29 +601,29 @@ namespace OFCSS.Migrations
             modelBuilder.Entity("OFCSS.Models.CropSale", b =>
                 {
                     b.HasOne("OFCSS.Models.Farmer", "Farmer")
-                        .WithMany("CropSale")
+                        .WithMany("CropSales")
                         .HasForeignKey("Farmerf_id");
 
                     b.Navigation("Farmer");
                 });
 
-            modelBuilder.Entity("OFCSS.Models.MerchantRequirment", b =>
+            modelBuilder.Entity("OFCSS.Models.Merchant", b =>
                 {
-                    b.HasOne("OFCSS.Models.Merchant", "Merchant")
-                        .WithMany("MerchantRequirment")
-                        .HasForeignKey("Merchantm_id");
+                    b.HasOne("OFCSS.Models.MerchantRequirment", "MerchantRequirment")
+                        .WithMany("Merchant")
+                        .HasForeignKey("MerchantRequirmentmr_id");
 
-                    b.Navigation("Merchant");
+                    b.Navigation("MerchantRequirment");
                 });
 
             modelBuilder.Entity("OFCSS.Models.Farmer", b =>
                 {
-                    b.Navigation("CropSale");
+                    b.Navigation("CropSales");
                 });
 
-            modelBuilder.Entity("OFCSS.Models.Merchant", b =>
+            modelBuilder.Entity("OFCSS.Models.MerchantRequirment", b =>
                 {
-                    b.Navigation("MerchantRequirment");
+                    b.Navigation("Merchant");
                 });
 #pragma warning restore 612, 618
         }

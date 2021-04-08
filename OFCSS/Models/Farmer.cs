@@ -41,7 +41,6 @@ namespace OFCSS.Models
         [Required, DataType(DataType.Password)]
         public string password { get; set; }
 
-        public int c_id { get; set; }
-        public CropSale CropSale { get; set; }
+        public ICollection<CropSale> CropSale { get; set; }
     }
 }

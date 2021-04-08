@@ -22,7 +22,8 @@ namespace OFCSS.Models
 
         [Required]
         public string mr_discription { get; set; }
-
-        public ICollection<Merchant> Merchant { get; set; }
+         
+        public int m_id { get; set; }
+        public Merchant Merchant { get; set; }
     }
 }
